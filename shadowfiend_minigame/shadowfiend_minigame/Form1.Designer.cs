@@ -103,7 +103,8 @@
             // shock
             // 
             this.shock.Image = global::shadowfiend_minigame.Properties.Resources.brave_3iLZlTBLnh;
-            this.shock.Location = new System.Drawing.Point(1106, 204);
+            this.shock.InitialImage = global::shadowfiend_minigame.Properties.Resources.brave_3iLZlTBLnh;
+            this.shock.Location = new System.Drawing.Point(1100, 194);
             this.shock.Name = "shock";
             this.shock.Size = new System.Drawing.Size(86, 141);
             this.shock.TabIndex = 8;

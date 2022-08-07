@@ -13,6 +13,9 @@ namespace shadowfiend_minigame
         private int zeus_hp = 1000;
         private int shadow_fiend_hp = 2800;
         private int speed_zeus, damage_zeus;
+        private bool PlayGame_Check = false;
+        private bool shock_access = true;
+        Exception exc = new Exception();
         private int[] _frst_location = new int[81]
         {
             400,
@@ -293,7 +296,7 @@ namespace shadowfiend_minigame
             Thread thread = new Thread(Zeus);
             if (CheckedBox() == false)
             {
-                MessageBox.Show("Выберите сложность игры!");
+                exc.CallException(-2);
             }
             else
             {
@@ -314,6 +317,7 @@ namespace shadowfiend_minigame
 
         private async void Zeus()
         {
+            PlayGame_Check = true;
             do
             {
                 for (int i = 0; i < 50; i++)
@@ -391,22 +395,6 @@ namespace shadowfiend_minigame
                         }
                     }
                 }
-                if (shadow_fiend_hp == 0)
-                {
-                    MessageBox.Show("You lose");
-                    this.Invoke(new Action(() => Start.Visible = true));
-                    this.Invoke(new Action(() => checkBox1.Visible = true));
-                    this.Invoke(new Action(() => checkBox2.Visible = true));
-                    this.Invoke(new Action(() => checkBox3.Visible = true));
-                }
-                else if (zeus_hp == 0)
-                {
-                    MessageBox.Show("You win");
-                    this.Invoke(new Action(() => Start.Visible = true));
-                    this.Invoke(new Action(() => checkBox1.Visible = true));
-                    this.Invoke(new Action(() => checkBox2.Visible = true));
-                    this.Invoke(new Action(() => checkBox3.Visible = true));
-                }
             }
             while (Stop() != true);
             ResetAll();
@@ -449,32 +437,99 @@ namespace shadowfiend_minigame
             zeus_hp = 1000;
             shadow_fiend_hp = 2800;
             _zeus.Location = new Point(1320, 194);
+            PlayGame_Check = false;
         }
-      
+
+        private async void ZShock_Time()
+        {
+            shock_access = false;
+            time1.Visible = true;
+            Thread.Sleep(1000);
+            time1.Text = "2";
+            Thread.Sleep(1000);
+            time1.Text = "1";
+            Thread.Sleep(1000);
+            time1.Visible = false;
+            time1.Text = "3";
+        }
+
+        private async void XShock_Time()
+        {
+            shock_access = false;
+            time2.Visible = true;
+            Thread.Sleep(1000);
+            time2.Text = "2";
+            Thread.Sleep(1000);
+            time2.Text = "1";
+            Thread.Sleep(1000);
+            time2.Visible = false;
+            time2.Text = "3";
+        }
+
+        private async void CShock_Time()
+        {
+            shock_access = false;
+            time3.Visible = true;
+            Thread.Sleep(1000);
+            time3.Text = "2";
+            Thread.Sleep(1000);
+            time3.Text = "1";
+            Thread.Sleep(1000);
+            time3.Visible = false;
+            time3.Text = "3";
+        }
+
         private async void ShadowRaze_Click(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Z:
+                    Thread z_thread = new Thread(ZShock_Time);
+                    if (PlayGame_Check == false)
+                    {
+                        exc.CallException(1);
+                        return;
+                    }
+                    if (shock_access == false)
+                    { exc.CallException(3); }
                     shock.Location = new Point(_first_shadowrazeX, _first_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    z_thread.Start();
                     break;
                 case Keys.X:
+                    Thread x_thread = new Thread(XShock_Time);
+                    if (shock_access == false)
+                    { exc.CallException(3); }
+                    if (PlayGame_Check == false)
+                    {
+                        exc.CallException(1);
+                        return;
+                    }
                     shock.Location = new Point(_second_shadowrazeX, _second_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    x_thread.Start();
                     break;
                 case Keys.C:
+                    Thread c_thread = new Thread(CShock_Time);
+                    if (shock_access == false)
+                    { exc.CallException(3); }
+                    if (PlayGame_Check == false)
+                    {
+                        exc.CallException(1);
+                        return;
+                    }
                     shock.Location = new Point(_third_shadowrazeX, _third_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    c_thread.Start();
                     break;
             }
         }

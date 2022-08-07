@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.hp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +44,12 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.time3 = new System.Windows.Forms.Label();
+            this.time1 = new System.Windows.Forms.Label();
+            this.time2 = new System.Windows.Forms.Label();
+            this.Z_Timer = new System.Windows.Forms.Timer(this.components);
+            this.X_Timer = new System.Windows.Forms.Timer(this.components);
+            this.C_Timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._zeus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -201,11 +208,62 @@
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
+            // time3
+            // 
+            this.time3.AutoSize = true;
+            this.time3.BackColor = System.Drawing.Color.Gray;
+            this.time3.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time3.Location = new System.Drawing.Point(754, 533);
+            this.time3.Name = "time3";
+            this.time3.Size = new System.Drawing.Size(68, 73);
+            this.time3.TabIndex = 15;
+            this.time3.Text = "3";
+            this.time3.Visible = false;
+            // 
+            // time1
+            // 
+            this.time1.AutoSize = true;
+            this.time1.BackColor = System.Drawing.Color.Gray;
+            this.time1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time1.Location = new System.Drawing.Point(177, 533);
+            this.time1.Name = "time1";
+            this.time1.Size = new System.Drawing.Size(68, 73);
+            this.time1.TabIndex = 16;
+            this.time1.Text = "3";
+            this.time1.Visible = false;
+            // 
+            // time2
+            // 
+            this.time2.AutoSize = true;
+            this.time2.BackColor = System.Drawing.Color.Gray;
+            this.time2.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time2.Location = new System.Drawing.Point(462, 533);
+            this.time2.Name = "time2";
+            this.time2.Size = new System.Drawing.Size(68, 73);
+            this.time2.TabIndex = 17;
+            this.time2.Text = "3";
+            this.time2.Visible = false;
+            // 
+            // Z_Timer
+            // 
+            this.Z_Timer.Interval = 3000;
+            // 
+            // X_Timer
+            // 
+            this.X_Timer.Interval = 3000;
+            // 
+            // C_Timer
+            // 
+            this.C_Timer.Interval = 3000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1532, 698);
+            this.Controls.Add(this.time2);
+            this.Controls.Add(this.time1);
+            this.Controls.Add(this.time3);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -252,6 +310,12 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Label time3;
+        private System.Windows.Forms.Label time1;
+        private System.Windows.Forms.Label time2;
+        private System.Windows.Forms.Timer Z_Timer;
+        private System.Windows.Forms.Timer X_Timer;
+        private System.Windows.Forms.Timer C_Timer;
     }
 }
 

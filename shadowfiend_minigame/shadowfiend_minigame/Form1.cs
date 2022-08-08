@@ -11,7 +11,7 @@ namespace shadowfiend_minigame
         private readonly int _first_shadowrazeX = 400, _first_shadowrazeY = 204;
         private readonly int _second_shadowrazeX = 720, _second_shadowrazeY = 204;
         private readonly int _third_shadowrazeX = 1100, _third_shadowrazeY = 204;
-        private int zeus_hp = 1000;
+        private int zeus_hp = 3000;
         private int shadow_fiend_hp = 2800;
         private int speed_zeus, damage_zeus;
         private bool PlayGame_Check = false;
@@ -669,7 +669,7 @@ namespace shadowfiend_minigame
         private void ResetAll()
         {
             this.Invoke(new Action(() => hp.Text = "HP: 2800"));
-            this.Invoke(new Action(() => label4.Text = "zeus_hp: 1000"));
+            this.Invoke(new Action(() => label4.Text = "zeus_hp: 3000"));
             zeus_hp = 1000;
             shadow_fiend_hp = 2800;
             _zeus.Location = new Point(1320, 194);

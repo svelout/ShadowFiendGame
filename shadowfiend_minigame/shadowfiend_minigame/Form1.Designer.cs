@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.hp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,9 +46,6 @@
             this.time3 = new System.Windows.Forms.Label();
             this.time1 = new System.Windows.Forms.Label();
             this.time2 = new System.Windows.Forms.Label();
-            this.Z_Timer = new System.Windows.Forms.Timer(this.components);
-            this.X_Timer = new System.Windows.Forms.Timer(this.components);
-            this.C_Timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._zeus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -173,7 +169,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(256, 39);
             this.label4.TabIndex = 11;
-            this.label4.Text = "zeus_hp: 1000";
+            this.label4.Text = "zeus_hp: 3000";
             // 
             // checkBox1
             // 
@@ -244,18 +240,6 @@
             this.time2.Text = "3";
             this.time2.Visible = false;
             // 
-            // Z_Timer
-            // 
-            this.Z_Timer.Interval = 3000;
-            // 
-            // X_Timer
-            // 
-            this.X_Timer.Interval = 3000;
-            // 
-            // C_Timer
-            // 
-            this.C_Timer.Interval = 3000;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,9 +297,6 @@
         private System.Windows.Forms.Label time3;
         private System.Windows.Forms.Label time1;
         private System.Windows.Forms.Label time2;
-        private System.Windows.Forms.Timer Z_Timer;
-        private System.Windows.Forms.Timer X_Timer;
-        private System.Windows.Forms.Timer C_Timer;
     }
 }
 

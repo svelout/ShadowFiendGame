@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
 
 namespace shadowfiend_minigame
 {
@@ -18,6 +19,7 @@ namespace shadowfiend_minigame
         private bool shock_accessX = true;
         private bool shock_accessC = true;
         Exception exc = new Exception();
+        SoundPlayer sp = new SoundPlayer();
         private int[] _frst_location = new int[81]
         {
             400,
@@ -275,7 +277,8 @@ namespace shadowfiend_minigame
         };
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            sp.Stream = Properties.Resources.ShadowrazeWav;
             this.KeyDown += new KeyEventHandler(ShadowRaze_Click);
             KeyPreview = true;
         }
@@ -326,7 +329,7 @@ namespace shadowfiend_minigame
                 {
                     this.Invoke(new Action(() => _zeus.Location = new Point(_zeus.Location.X - 20, _zeus.Location.Y)));
                     Thread.Sleep(speed_zeus);
-                    if (_zeus.Location.X == 1100)
+                    if (Array.Exists(_frst_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -334,7 +337,7 @@ namespace shadowfiend_minigame
                             this.Invoke(new Action(() => label4.Text = "zeus_hp: " + zeus_hp));
                         }
                     }
-                    else if (_zeus.Location.X == 720)
+                    else if (Array.Exists(_sec_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -342,7 +345,7 @@ namespace shadowfiend_minigame
                             this.Invoke(new Action(() => label4.Text = "zeus_hp: " + zeus_hp));
                         }
                     }
-                    else if (_zeus.Location.X == 400)
+                    else if (Array.Exists(_thrd_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -364,7 +367,7 @@ namespace shadowfiend_minigame
                 {
                     this.Invoke(new Action(() => _zeus.Location = new Point(_zeus.Location.X + 20, _zeus.Location.Y)));
                     Thread.Sleep(speed_zeus);
-                    if (_zeus.Location.X == 1100)
+                    if (Array.Exists(_frst_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -372,7 +375,7 @@ namespace shadowfiend_minigame
                             this.Invoke(new Action(() => label4.Text = "zeus_hp: " + zeus_hp));
                         }
                     }
-                    else if (_zeus.Location.X == 720)
+                    else if (Array.Exists(_sec_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -380,7 +383,7 @@ namespace shadowfiend_minigame
                             this.Invoke(new Action(() => label4.Text = "zeus_hp: " + zeus_hp));
                         }
                     }
-                    else if (_zeus.Location.X == 400)
+                    else if (Array.Exists(_thrd_location, element => element == _zeus.Location.X) == true)
                     {
                         if (shock.Visible == true)
                         {
@@ -506,8 +509,9 @@ namespace shadowfiend_minigame
                         this.Invoke(new Action(() => checkBox3.Visible = true));
                         break;
                     }
+                    sp.Play();
                     z_thread.Start();
-                    break;                   
+                    break;
                 case Keys.X:
                     Thread x_thread = new Thread(XShock_Time);
                     if (PlayGame_Check == false)
@@ -533,6 +537,7 @@ namespace shadowfiend_minigame
                         this.Invoke(new Action(() => checkBox3.Visible = true));
                         break;
                     }
+                    sp.Play();
                     x_thread.Start();
                     break;
                 case Keys.C:
@@ -560,6 +565,7 @@ namespace shadowfiend_minigame
                         this.Invoke(new Action(() => checkBox3.Visible = true));
                         break;
                     }
+                    sp.Play();
                     c_thread.Start();
                     break;
             }

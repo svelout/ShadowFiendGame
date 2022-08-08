@@ -145,4 +145,7 @@
   <data name="im_not_ready_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\im_not_ready_.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ShadowrazeWav" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShadowrazeWav.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -111,5 +111,11 @@
   <ItemGroup>
     <None Include="Resources\im_not_ready_.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shadowraze.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShadowrazeWav.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

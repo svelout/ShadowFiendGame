@@ -14,7 +14,9 @@ namespace shadowfiend_minigame
         private int shadow_fiend_hp = 2800;
         private int speed_zeus, damage_zeus;
         private bool PlayGame_Check = false;
-        private bool shock_access = true;
+        private bool shock_accessZ = true;
+        private bool shock_accessX = true;
+        private bool shock_accessC = true;
         Exception exc = new Exception();
         private int[] _frst_location = new int[81]
         {
@@ -358,19 +360,11 @@ namespace shadowfiend_minigame
                     this.Invoke(new Action(() => checkBox2.Visible = true));
                     this.Invoke(new Action(() => checkBox3.Visible = true));
                 }
-                else if (zeus_hp == 0)
-                {
-                    MessageBox.Show("You win");
-                    this.Invoke(new Action(() => Start.Visible = true));
-                    this.Invoke(new Action(() => checkBox1.Visible = true));
-                    this.Invoke(new Action(() => checkBox2.Visible = true));
-                    this.Invoke(new Action(() => checkBox3.Visible = true));
-                }
                 for (int i = 0; i < 50; i++)
                 {
                     this.Invoke(new Action(() => _zeus.Location = new Point(_zeus.Location.X + 20, _zeus.Location.Y)));
                     Thread.Sleep(speed_zeus);
-                    if (_zeus.Location.X == 1106)
+                    if (_zeus.Location.X == 1100)
                     {
                         if (shock.Visible == true)
                         {
@@ -442,41 +436,44 @@ namespace shadowfiend_minigame
 
         private async void ZShock_Time()
         {
-            shock_access = false;
-            time1.Visible = true;
+            shock_accessZ = false;
+            this.Invoke(new Action(() => time1.Visible = true));
             Thread.Sleep(1000);
-            time1.Text = "2";
+            this.Invoke(new Action(() => time1.Text = "2"));
             Thread.Sleep(1000);
-            time1.Text = "1";
+            this.Invoke(new Action(() => time1.Text = "1"));
             Thread.Sleep(1000);
-            time1.Visible = false;
-            time1.Text = "3";
+            this.Invoke(new Action(() => time1.Visible = false));
+            this.Invoke(new Action(() => time1.Text = "3"));
+            shock_accessZ = true;
         }
 
         private async void XShock_Time()
         {
-            shock_access = false;
-            time2.Visible = true;
+            shock_accessX = false;
+            this.Invoke(new Action(() => time2.Visible = true));
             Thread.Sleep(1000);
-            time2.Text = "2";
+            this.Invoke(new Action(() => time2.Text = "2"));
             Thread.Sleep(1000);
-            time2.Text = "1";
+            this.Invoke(new Action(() => time2.Text = "1"));
             Thread.Sleep(1000);
-            time2.Visible = false;
-            time2.Text = "3";
+            this.Invoke(new Action(() => time2.Visible = false));
+            this.Invoke(new Action(() => time2.Text = "3"));
+            shock_accessX = true;
         }
 
         private async void CShock_Time()
         {
-            shock_access = false;
-            time3.Visible = true;
+            shock_accessC = false;
+            this.Invoke(new Action(() => time3.Visible = true));
             Thread.Sleep(1000);
-            time3.Text = "2";
+            this.Invoke(new Action(() => time3.Text = "2"));
             Thread.Sleep(1000);
-            time3.Text = "1";
+            this.Invoke(new Action(() => time3.Text = "1"));
             Thread.Sleep(1000);
-            time3.Visible = false;
-            time3.Text = "3";
+            this.Invoke(new Action(() => time3.Visible = false));
+            this.Invoke(new Action(() => time3.Text = "3"));
+            shock_accessC = true;
         }
 
         private async void ShadowRaze_Click(object sender, KeyEventArgs e)
@@ -490,45 +487,79 @@ namespace shadowfiend_minigame
                         exc.CallException(1);
                         return;
                     }
-                    if (shock_access == false)
-                    { exc.CallException(3); }
+                    if (shock_accessZ == false)
+                    {
+                        exc.CallException(3);
+                        break;
+                    }
                     shock.Location = new Point(_first_shadowrazeX, _first_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    if (zeus_hp == 0)
+                    {
+                        MessageBox.Show("You win");
+                        this.Invoke(new Action(() => Start.Visible = true));
+                        this.Invoke(new Action(() => checkBox1.Visible = true));
+                        this.Invoke(new Action(() => checkBox2.Visible = true));
+                        this.Invoke(new Action(() => checkBox3.Visible = true));
+                        break;
+                    }
                     z_thread.Start();
-                    break;
+                    break;                   
                 case Keys.X:
                     Thread x_thread = new Thread(XShock_Time);
-                    if (shock_access == false)
-                    { exc.CallException(3); }
                     if (PlayGame_Check == false)
                     {
                         exc.CallException(1);
                         return;
+                    }
+                    if (shock_accessX == false)
+                    { exc.CallException(3);
+                        break;
                     }
                     shock.Location = new Point(_second_shadowrazeX, _second_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    if (zeus_hp == 0)
+                    {
+                        MessageBox.Show("You win");
+                        this.Invoke(new Action(() => Start.Visible = true));
+                        this.Invoke(new Action(() => checkBox1.Visible = true));
+                        this.Invoke(new Action(() => checkBox2.Visible = true));
+                        this.Invoke(new Action(() => checkBox3.Visible = true));
+                        break;
+                    }
                     x_thread.Start();
                     break;
                 case Keys.C:
                     Thread c_thread = new Thread(CShock_Time);
-                    if (shock_access == false)
-                    { exc.CallException(3); }
                     if (PlayGame_Check == false)
                     {
                         exc.CallException(1);
                         return;
+                    }
+                    if (shock_accessC == false)
+                    { exc.CallException(3);
+                        break;
                     }
                     shock.Location = new Point(_third_shadowrazeX, _third_shadowrazeY);
                     shock.Visible = true;
                     this.Update();
                     Thread.Sleep(100);
                     shock.Visible = false;
+                    if (zeus_hp == 0)
+                    {
+                        MessageBox.Show("You win");
+                        this.Invoke(new Action(() => Start.Visible = true));
+                        this.Invoke(new Action(() => checkBox1.Visible = true));
+                        this.Invoke(new Action(() => checkBox2.Visible = true));
+                        this.Invoke(new Action(() => checkBox3.Visible = true));
+                        break;
+                    }
                     c_thread.Start();
                     break;
             }

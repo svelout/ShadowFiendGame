@@ -103,9 +103,6 @@
     <None Include="Resources\Zeus.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Рано.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\im_not_ready.mp3.mp3" />
   </ItemGroup>
   <ItemGroup>

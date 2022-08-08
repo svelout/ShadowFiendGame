@@ -9,7 +9,7 @@ namespace shadowfiend_minigame
     {
         SoundPlayer player_1 = new SoundPlayer();
         SoundPlayer player_2 = new SoundPlayer();
-        Random r;
+        Random r = new Random();
 
         public Exception()
         {

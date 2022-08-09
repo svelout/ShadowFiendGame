@@ -606,13 +606,10 @@ namespace shadowfiend_minigame
                 {
                     this.Invoke(new Action(() => _zeus.Location = new Point(_zeus.Location.X + 20, _zeus.Location.Y)));
                     Thread.Sleep(speed_zeus);
-                    if (Array.Exists(_frst_location, element => element == _zeus.Location.X) == true)
+                    if (Array.Exists(_frst_location, element => element == _zeus.Location.X) == true && shock.Visible == true)
                     {
-                        if (shock.Visible == true)
-                        {
                             zeus_hp = zeus_hp - 200;
                             this.Invoke(new Action(() => label4.Text = "zeus_hp: " + zeus_hp));
-                        }
                     }
                     else if (Array.Exists(_sec_location, element => element == _zeus.Location.X) == true)
                     {
@@ -670,7 +667,7 @@ namespace shadowfiend_minigame
         {
             this.Invoke(new Action(() => hp.Text = "HP: 2800"));
             this.Invoke(new Action(() => label4.Text = "zeus_hp: 3000"));
-            zeus_hp = 1000;
+            zeus_hp = 3000;
             shadow_fiend_hp = 2800;
             _zeus.Location = new Point(1320, 194);
             PlayGame_Check = false;
